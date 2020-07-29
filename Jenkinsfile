@@ -13,7 +13,6 @@ pipeline {
         }
       }
     }
-  }
     stage ("SonarQube analysis") { 
       agent none
       steps { 
@@ -27,6 +26,7 @@ pipeline {
           }
         }
       } 
+	  }
     }
     stage('Saving Logs') {
       agent any
@@ -56,13 +56,5 @@ pipeline {
         }
       }
     }
-    //stage('Sync S3') {
-      //agent any
-      //steps {
-        //catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-          //sh 'aws s3 sync s3://sksingh-jenkins-786 /var/www/html'
-        //}
-      //}
-    //}
   }
 }
